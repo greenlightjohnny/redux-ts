@@ -1,12 +1,38 @@
-interface DefaultStateI {}
+import { PokeType, PokeDispatchTypes } from "../actions/PokeActionTypes"
+import * as pTypes from "../actions/PokeActionTypes"
+interface DefaultStateI {
+  loading: boolean
+  pokemon?: PokeType
+}
 
-const defaultState: DefaultStateI = {}
+const defaultState: DefaultStateI = {
+  loading: false,
+}
 
 const pokeReducer = (
   state: DefaultStateI = defaultState,
-  action: any
+  action: PokeDispatchTypes
 ): DefaultStateI => {
-  return state
+  switch (action.type) {
+    case pTypes.POKE_LOADING:
+      return {
+        ...state,
+        loading: true,
+      }
+    case pTypes.POKE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        pokemon: action.payload,
+      }
+    case pTypes.POKE_FAIL:
+      return {
+        ...state,
+        loading: false,
+      }
+    default:
+      return state
+  }
 }
 
 export default pokeReducer

@@ -7,5 +7,6 @@ const Store = createStore(
   RootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 )
+export type RootStore = ReturnType<typeof RootReducer>
 
 export default Store
