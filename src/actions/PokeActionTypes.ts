@@ -20,7 +20,7 @@ export type PokeSprites = {
 }
 
 export type PokeStats = {
-  base_state: number
+  base_stat: number
   stat: {
     name: string
   }

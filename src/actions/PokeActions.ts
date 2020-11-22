@@ -11,8 +11,7 @@ export const GetPokemon = (pokemon: string) => async (
       type: pType.POKE_LOADING,
     })
 
-    const res = await axios.get(`https://pokeapi.co/api/v2/${pokemon}
-        `)
+    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     dispatch({
       type: pType.POKE_SUCCESS,
       payload: res.data,
